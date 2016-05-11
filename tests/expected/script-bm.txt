@@ -1,0 +1,4 @@
+These are short benchmarks - we're running each XXX times so they take about a second 
+ user system total real 
+clamp_a XXX XXX XXX ( XXX) 
+clamp_b XXX XXX XXX ( XXX) 

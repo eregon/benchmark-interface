@@ -1,0 +1,24 @@
+Warming up -------------------------------------- 
+ benchmarkable:XXX XXX i/100ms 
+ clamp_a XXX i/100ms 
+ clamp_b XXX i/100ms 
+ benchmarkable:XXX XXX i/100ms 
+ clamp_a XXX i/100ms 
+ clamp_b XXX i/100ms 
+ benchmarkable:XXX XXX i/100ms 
+ clamp_a XXX i/100ms 
+ clamp_b XXX i/100ms 
+Calculating ------------------------------------- 
+ benchmarkable:XXX XXX (XXX%) i/s - XXX in XXX 
+ clamp_a XXX (XXX%) i/s - XXX in XXX 
+ clamp_b XXX (XXX%) i/s - XXX in XXX 
+ benchmarkable:XXX XXX (XXX%) i/s - XXX in XXX 
+ clamp_a XXX (XXX%) i/s - XXX in XXX 
+ clamp_b XXX (XXX%) i/s - XXX in XXX 
+ benchmarkable:XXX XXX (XXX%) i/s - XXX in XXX 
+ clamp_a XXX (XXX%) i/s - XXX in XXX 
+ clamp_b XXX (XXX%) i/s - XXX in XXX 
+ 
+Comparison: 
+ XXX
+ 
