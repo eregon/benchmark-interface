@@ -71,7 +71,7 @@ Supported frontends are:
 
 * Benchmarkable
 * MRI's benchmarks
-* `benchmark` (the standard `measure`, `bm`, `bmbm` methods and so on)
+* The `benchmark` standard library (`measure`, `bm`, `bmbm` and so on)
 * RBench
 * Perfer
 * `benchmark-ips`
