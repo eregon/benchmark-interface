@@ -26,11 +26,11 @@ end
 
 failed = false
 
-test_example_backend = Proc.new do |example, backend, notes|
-  puts "#{example} #{backend} #{notes}"
+test_example_backend = Proc.new do |example, backend, options|
+  puts "#{example} #{backend} #{options}"
   
   expected_file = "tests/expected/#{File.basename(example, '.rb')}-#{backend[2..-1]}.txt"
-  actual = `bin/benchmarkable #{example} #{backend} | tests/tools/squash.rb`
+  actual = `bin/benchmarkable #{example} #{backend} #{options} | tests/tools/squash.rb`
   
   if regenerate
     File.write expected_file, actual
@@ -50,11 +50,11 @@ end
 examples.each do |example|
   backends.each do |backend|
     if example == 'examples/mri.rb'
-      test_example_backend.call example, backend, 'with MRI translation' unless earlier_than_21
+      test_example_backend.call example, backend, '' unless earlier_than_21
       
       begin
         FileUtils.cp 'tests/rewritten/mri.rb', 'mri-rewrite-cache.rb'
-        test_example_backend.call example, backend, 'with cached MRI translation'
+        test_example_backend.call example, backend, '--use-cache'
       ensure
         FileUtils.rm 'mri-rewrite-cache.rb'
       end
