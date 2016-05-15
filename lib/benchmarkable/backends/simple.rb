@@ -14,7 +14,10 @@ module Benchmarkable
         loop_time = 10
         
         options.each do |option, value|
-          loop_time = Integer(option[2..-1]) rescue nil
+          begin
+            loop_time = Integer(option[2..-1])
+          rescue
+          end
         end
         
         benchmark_set.benchmarks(names).each do |benchmark|
