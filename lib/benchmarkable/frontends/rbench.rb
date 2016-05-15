@@ -19,6 +19,7 @@ module Benchmarkable
     end
     
     def column(name, options=nil)
+      singleton_class = (class << self; self end)
       singleton_class.class_eval "def #{name}(&block); rbench_benchmarkable #{name.inspect}, block; end"
       @columns.push name
     end
