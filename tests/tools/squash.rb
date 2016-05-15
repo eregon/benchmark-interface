@@ -12,7 +12,7 @@
 state = :normal
 last_xxx = false
 
-ARGF.set_encoding(Encoding::UTF_8)
+ARGF.set_encoding(Encoding::UTF_8) if defined?(Encoding)
 
 ARGF.each_line do |line|
   
