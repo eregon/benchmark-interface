@@ -158,14 +158,16 @@ If a benchmark takes more than a tenth of a second, the warmup and sampling
 periods of `benchmark-ips` will be increased, as by default `benchmark-ips` is
 set up for quicker benchmarks that complete many iterations in a second.
 
-You can turn this off with `--no-scale`
+You can turn this off with `--no-scale`.
 
-#### `bench9000`
+You'll need to manually install the `benchmark-ips` gem.
 
-Using `bench9000` as a backend is a little more complex. You need to define a
+#### Bench9000
+
+Using Bench9000 as a backend is a little more complex. You need to define a
 configuration file which runs `benchmarkable` with the benchmark file, the
 `--bench9000` flag and the name of the benchmark, and then you separately run
-`bench9000`.
+the `bench9000` command.
 
 ```
 benchmark 'clamp_a', 'bin/benchmarkable examples/benchmarkable.rb --bench9000 clamp_a'
@@ -173,11 +175,13 @@ benchmark 'clamp_b', 'bin/benchmarkable examples/benchmarkable.rb --bench9000 cl
 ```
 
 ```
-$ bench9000/bin/bench9000 detail --config bench9000.config 2.3.0 clamp_a clamp_b --value-per-line
+$ bench9000 detail --config bench9000.config 2.3.0 clamp_a clamp_b --value-per-line
 ```
 
-The `bench9000` has the same scaling functionality as `bm`, but here it switches
+The Bench9000 has the same scaling functionality as `bm`, but here it switches
 to the micro-harness. Turn it off with `--no-scale`.
+
+You'll need to manually install the Bench9000 gem.
 
 ## Supported Ruby Implementations
 
@@ -192,6 +196,15 @@ probably work fine.
 
 Benchmarkable is designed to be gentle on new implementations of Ruby and
 should hopefully be relatively easy to get working if you are writing one.
+
+One major limitation is that the `parser` and `unparser` gems don't work with
+Ruby versions below 2.1. You can get around this by caching the translation
+result with a supported version of Ruby (the `--cache` option) and then
+using that cached translation in the version of Ruby you are benchmarking
+(the `--use-cache` option).
+
+You also need to install these gems manually if you want to translate MRI
+benchmarks.
 
 ## Caveats
 
