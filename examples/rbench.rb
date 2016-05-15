@@ -8,7 +8,7 @@
 
 require 'rbench'
 
-require_relative 'clamp'
+require File.expand_path('clamp', File.dirname(__FILE__))
 
 RBench.run(10_000) do
   format :width => 65

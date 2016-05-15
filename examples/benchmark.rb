@@ -8,7 +8,7 @@
 
 require 'benchmark'
 
-require_relative 'clamp'
+require File.expand_path('clamp', File.dirname(__FILE__))
 
 Benchmark.measure do
   clamp_a(10, 40, 90)

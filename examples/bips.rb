@@ -8,7 +8,7 @@
 
 require 'benchmark/ips'
 
-require_relative 'clamp'
+require File.expand_path('clamp', File.dirname(__FILE__))
 
 Benchmark.ips do |x|
   x.config(:time => 5, :warmup => 2)

@@ -6,7 +6,7 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-require_relative 'clamp'
+require File.expand_path('clamp', File.dirname(__FILE__))
 
 def harness_input
   [10, 40, 90]

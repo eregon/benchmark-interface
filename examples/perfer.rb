@@ -8,7 +8,7 @@
 
 require 'perfer'
 
-require_relative 'clamp'
+require File.expand_path('clamp', File.dirname(__FILE__))
 
 Perfer.session 'clamp' do |s|
   s.iterate 'clamp_a' do |n|
