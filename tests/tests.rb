@@ -8,6 +8,11 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
+require 'fileutils'
+
+version = RUBY_VERSION.split('.').first(2).map(&:to_i)
+earlier_than_21 = version[0] < 2 || (version[0] == 2 && version[1] < 1)
+
 regenerate = ARGV.delete('--regenerate')
 
 examples = Dir.glob('examples/*.rb')
@@ -21,25 +26,40 @@ end
 
 failed = false
 
+test_example_backend = Proc.new do |example, backend, notes|
+  puts "#{example} #{backend} #{notes}"
+  
+  expected_file = "tests/expected/#{File.basename(example, '.rb')}-#{backend[2..-1]}.txt"
+  actual = `bin/benchmarkable #{example} #{backend} | tests/tools/squash.rb`
+  
+  if regenerate
+    File.write expected_file, actual
+  else
+    expected = File.read expected_file
+    if expected != actual
+      puts 'not as expected!'
+      puts 'expected:'
+      puts expected
+      puts 'actual:'
+      puts actual
+      failed = true
+    end
+  end
+end
+
 examples.each do |example|
   backends.each do |backend|
-    puts "#{example} #{backend}"
-    
-    expected_file = "tests/expected/#{File.basename(example, '.rb')}-#{backend[2..-1]}.txt"
-    actual = `bin/benchmarkable #{example} #{backend} | tests/tools/squash.rb`
-    
-    if regenerate
-      File.write expected_file, actual
-    else
-      expected = File.read expected_file
-      if expected != actual
-        puts 'not as expected!'
-        puts 'expected:'
-        puts expected
-        puts 'actual:'
-        puts actual
-        failed = true
+    if example == 'examples/mri.rb'
+      test_example_backend.call example, backend, 'with MRI translation' unless earlier_than_21
+      
+      begin
+        FileUtils.cp 'tests/rewritten/mri.rb', 'mri-rewrite-cache.rb'
+        test_example_backend.call example, backend, 'with cached MRI translation'
+      ensure
+        FileUtils.rm 'mri-rewrite-cache.rb'
       end
+    else
+      test_example_backend.call example, backend, ''
     end
   end
 end
