@@ -21,7 +21,7 @@ module Kernel
       when 'perfer'
         benchmarkable_original_require 'benchmarkable/frontends/perfer'
       when 'bench9000/harness', 'bench9000/micro-harness'
-        if caller_locations.any? { |l| l.path.include? 'lib/benchmarkable/backends/bench9000.rb' }
+        if caller.any? { |l| l.include? 'lib/benchmarkable/backends/bench9000.rb' }
           # Do nothing
         elsif feature == 'bench9000/harness'
           benchmarkable_original_require 'benchmarkable/frontends/bench9000'

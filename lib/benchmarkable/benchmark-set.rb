@@ -37,16 +37,8 @@ module Benchmarkable
 
     def implicit_name
       file = File.basename(@path, '.rb')
-      
-      line_number = 0
-      
-      caller_locations.each do |location|
-        if location.path.include?(@path)
-          line_number = location.lineno
-        end
-      end
-      
-      "#{file}:#{line_number}"
+      @counter += 1
+      "#{file}:#{@counter}"
     end
 
     def prepare

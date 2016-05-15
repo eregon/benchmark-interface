@@ -52,7 +52,7 @@ benchmarkable { 14 ** 3 }
 ```
 
 You can give benchmarks names, and you usually should, but they will be named
-with the file name and line number if you don't.
+with the file name and a counter if you don't.
 
 ```ruby
 benchmarkable('mul') { 14 * 14 * 14 }
