@@ -197,11 +197,11 @@ probably work fine.
 Benchmarkable is designed to be gentle on new implementations of Ruby and
 should hopefully be relatively easy to get working if you are writing one.
 
-One major limitation is that the `parser` and `unparser` gems don't work with
-Ruby versions below 2.1. You can get around this by caching the translation
-result with a supported version of Ruby (the `--cache` option) and then
-using that cached translation in the version of Ruby you are benchmarking
-(the `--use-cache` option).
+One major limitation is that the `unparser` gem doesn't work with Ruby versions
+below 1.9. You can get around this by caching the translation result with a
+supported version of Ruby (the `--cache` option) and then using that cached
+translation in the version of Ruby you are benchmarking (the `--use-cache`
+option).
 
 You also need to install these gems manually if you want to translate MRI
 benchmarks.
