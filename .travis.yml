@@ -11,7 +11,6 @@ rvm:
   - jruby-9.0.5.0
   - jruby-9.1.0.0
   - jruby-head
-  - rbx-1.4.3
   - rbx-2.71828182
   - rbx-3.30
   - rbx-head
