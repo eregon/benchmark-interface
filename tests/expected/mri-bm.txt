@@ -1,2 +1,2 @@
  user system total real 
-mri XXX XXX XXX ( XXX) 
+mri XXX XXX XXX (XXX) 
