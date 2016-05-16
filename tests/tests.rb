@@ -14,6 +14,7 @@ version = RUBY_VERSION.split('.').first(2).map(&:to_i)
 earlier_than_21 = version[0] < 2 || (version[0] == 2 && version[1] < 1)
 
 regenerate = ARGV.delete('--regenerate')
+resquash = ARGV.delete('--resquash')
 
 examples = Dir.glob('examples/*.rb')
 examples.delete('examples/clamp.rb')
@@ -30,19 +31,25 @@ test_example_backend = Proc.new do |example, backend, options|
   puts "#{example} #{backend} #{options}"
   
   expected_file = "tests/expected/#{File.basename(example, '.rb')}-#{backend[2..-1]}.txt"
-  actual = `bin/benchmarkable #{example} #{backend} #{options} | tests/tools/squash.rb`
   
-  if regenerate
-    File.write expected_file, actual
+  if resquash
+    resquashed = `cat #{expected_file} | tests/tools/squash.rb`
+    File.write expected_file, resquashed
   else
-    expected = File.read expected_file
-    if expected != actual
-      puts 'not as expected!'
-      puts 'expected:'
-      puts expected
-      puts 'actual:'
-      puts actual
-      failed = true
+    actual = `bin/benchmarkable #{example} #{backend} #{options} | tests/tools/squash.rb`
+    
+    if regenerate
+      File.write expected_file, actual
+    else
+      expected = File.read expected_file
+      if expected != actual
+        puts 'not as expected!'
+        puts 'expected:'
+        puts expected
+        puts 'actual:'
+        puts actual
+        failed = true
+      end
     end
   end
 end
