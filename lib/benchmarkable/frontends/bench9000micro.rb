@@ -10,18 +10,6 @@ input = micro_harness_input
 
 SMALL_PRIME = 149
 
-def harness_sample(input)
-  sum = 0
-  micro_harness_iterations.times do
-    sum = (sum + micro_harness_sample(input)) % SMALL_PRIME
-  end
-  sum
-end
-
-if harness_sample(input) != micro_harness_expected
-  abort 'result was incorrect'
-end
-
 Object.instance_eval do
   alias_method :true_micro_harness_sample, :micro_harness_sample
 end
