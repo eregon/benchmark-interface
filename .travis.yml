@@ -13,7 +13,6 @@ rvm:
   - jruby-head
   - rbx-2.71828182
   - rbx-3.29
-  - rbx-head
 install:
   - gem install benchmark-ips || echo skipping benchmark-ips
   - gem install parser || echo skipping parser
