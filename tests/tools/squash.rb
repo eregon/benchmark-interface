@@ -28,6 +28,9 @@ ARGF.each_line do |line|
   # Squash bips' XXX in XXX to just XXX
   line.gsub! /XXX in XXX/, 'XXX'
   
+  # Squash whitespace out of ( XXX )
+  line.gsub! /\(\s*XXX\s*\)/, '(XXX)'
+  
   # Turn any lines following Comparison: into XXX as the order can change
   if state == :normal
     if line.strip == 'Comparison:'
