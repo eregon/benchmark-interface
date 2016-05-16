@@ -4,6 +4,6 @@ Warming up --------------------------------------
  mri XXX i/100ms 
  mri XXX i/100ms 
 Calculating ------------------------------------- 
- mri XXX (XXX%) i/s - XXX in XXX 
- mri XXX (XXX%) i/s - XXX in XXX 
- mri XXX (XXX%) i/s - XXX in XXX 
+ mri XXX (XXX%) i/s - XXX 
+ mri XXX (XXX%) i/s - XXX 
+ mri XXX (XXX%) i/s - XXX 

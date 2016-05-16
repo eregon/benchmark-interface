@@ -4,6 +4,6 @@ Warming up --------------------------------------
  sleep XXX i/100ms 
  sleep XXX i/100ms 
 Calculating ------------------------------------- 
- sleep XXX (XXX%) i/s - XXX in XXX 
- sleep XXX (XXX%) i/s - XXX in XXX 
- sleep XXX (XXX%) i/s - XXX in XXX 
+ sleep XXX (XXX%) i/s - XXX 
+ sleep XXX (XXX%) i/s - XXX 
+ sleep XXX (XXX%) i/s - XXX 
