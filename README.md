@@ -185,13 +185,12 @@ You'll need to manually install the Bench9000 gem.
 
 ## Supported Ruby Implementations
 
-Tested versions are in brackets. Earlier versions of the same major also
-probably work fine.
+Tested versions are in brackets.
 
-* MRI
-* JRuby
+* MRI (1.8.7-p371, 1.9.3-p547, 2.0.0-p648, 2.1.10, 2.2.5, 2.3.1, head)
+* JRuby (1.7.25, 9.0.5.0, 9.1.0.0, head)
 * JRuby+Truffle
-* Rubinius
+* Rubinius (2.71828182, 3.29)
 * Topaz
 
 Benchmarkable is designed to be gentle on new implementations of Ruby and
