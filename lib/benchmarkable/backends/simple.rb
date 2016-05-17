@@ -14,6 +14,7 @@ module Benchmarkable
         loop_time = 10
         
         options.each do |option, value|
+          next if %w(--simple --use-cache).include?(option)
           begin
             loop_time = Integer(option[2..-1])
           rescue
