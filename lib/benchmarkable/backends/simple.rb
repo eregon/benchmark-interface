@@ -24,14 +24,12 @@ module Benchmarkable
           puts benchmark.name
           block = benchmark.block
 
-          finish_time = Time.now + loop_time
+          start_time = Time.now
 
-          while true
+          while Time.now - start_time < loop_time
             start_iteration_time = Time.now
-            break if start_iteration_time >= finish_time
-            finish_iteration_time = start_iteration_time + 1
             iterations = 0
-            while Time.now < finish_iteration_time
+            while Time.now - start_iteration_time < 1
               block.call
               iterations += 1
             end
