@@ -14,6 +14,6 @@ Object.instance_eval do
   alias_method :user_micro_harness_sample, :micro_harness_sample
 end
 
-benchmarkable do
+Benchmarkable.benchmark do
   user_micro_harness_sample input
 end

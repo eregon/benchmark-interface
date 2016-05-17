@@ -16,8 +16,16 @@ require 'benchmarkable/backends/bench9000'
 require 'benchmarkable/require'
 require 'benchmarkable/run'
 
-def benchmarkable(name=nil, &block)
-  Benchmarkable::BenchmarkSet.current.register name, block
+module Benchmarkable
+  
+  def self.benchmark(name=nil, &block)
+    Benchmarkable::BenchmarkSet.current.register name, block
+  end
+  
+end
+
+def benchmark(name=nil, &block)
+  Benchmarkable.benchmark name, &block
 end
 
 if $PROGRAM_NAME.split('/').last != 'benchmark'

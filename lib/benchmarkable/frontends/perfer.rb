@@ -11,7 +11,7 @@ module Benchmarkable
   class PerferContext
     
     def iterate(name, &block)
-      benchmarkable name, &block
+      Benchmarkable.benchmark name, &block
     end
     
   end

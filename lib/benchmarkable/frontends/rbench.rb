@@ -33,7 +33,7 @@ module Benchmarkable
     
     def report(name, &block)
       if @columns.size == 0
-        benchmarkable name, &block
+        Benchmarkable.benchmark name, &block
       else
         @report_name = name
         instance_eval &block
@@ -48,7 +48,7 @@ module Benchmarkable
     
     def rbench_benchmarkable(column_name, block)
       name = [@group_name, @report_name, column_name].compact.join('-')
-      benchmarkable name, &block
+      Benchmarkable.benchmark name, &block
     end
     
   end

@@ -23,7 +23,7 @@ module Benchmarkable
     def item(name=nil, code=nil, &block)
       raise 'cannot have both a string and a block' if code && block
       block = eval("Proc.new { #{code} }") if code
-      benchmarkable name, &block
+      Benchmarkable.benchmark name, &block
     end
     alias_method :report, :item
     

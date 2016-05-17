@@ -11,7 +11,7 @@ module Benchmarkable
   NON_MRI_INDICATORS = %w(
     Benchmark.measure Benchmark.realtime Benchmark.benchmark Benchmark.bm
     Benchmark.bmbm RBench.run Benchmark.ips Perfer.session harness_sample
-    benchmarkable
+    benchmark
   )
 
   def self.run(args)

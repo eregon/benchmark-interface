@@ -11,7 +11,7 @@ module Benchmarkable
   class BenchmarkContext
     
     def report(name=nil, &block)
-      benchmarkable name, &block
+      Benchmarkable.benchmark name, &block
     end
     
   end
@@ -24,11 +24,11 @@ module Benchmark
   FORMAT  = "%10.6u %10.6y %10.6t %10.6r\n"
 
   def self.measure(name=nil, &block)
-    benchmarkable name, &block
+    Benchmarkable.benchmark name, &block
   end
 
   def self.realtime(name=nil, &block)
-    benchmarkable name, &block
+    Benchmarkable.benchmark name, &block
   end
 
   def self.benchmark(caption='', label_width=nil, format=nil, *labels)
@@ -36,7 +36,7 @@ module Benchmark
   end
 
   def self.realtime(name=nil, &block)
-    benchmarkable name, &block
+    Benchmarkable.benchmark name, &block
   end
   
   def self.bm(label_width=0, *labels)

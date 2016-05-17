@@ -10,5 +10,5 @@ require 'benchmarkable'
 
 require File.expand_path('clamp', File.dirname(__FILE__))
 
-benchmarkable('clamp_a') { clamp_a(10, 40, 90) }
-benchmarkable('clamp_b') { clamp_b(10, 40, 90) }
+benchmark('clamp_a') { clamp_a(10, 40, 90) }
+benchmark('clamp_b') { clamp_b(10, 40, 90) }

@@ -8,5 +8,5 @@
 
 require 'benchmarkable'
 
-benchmarkable('mul') { '14 * 14 * 14' }
-benchmarkable('pow') { '14 ** 3' }
+benchmark('mul') { '14 * 14 * 14' }
+benchmark('pow') { '14 ** 3' }

@@ -47,20 +47,23 @@ Benchmarkable provides its own new format for writing benchmarks. It's very
 simple.
 
 ```ruby
-benchmarkable { 14 * 14 * 14 }
-benchmarkable { 14 ** 3 }
+benchmark { 14 * 14 * 14 }
+benchmark { 14 ** 3 }
 ```
 
 You can give benchmarks names, and you usually should, but they will be named
 with the file name and a counter if you don't.
 
 ```ruby
-benchmarkable('mul') { 14 * 14 * 14 }
-benchmarkable('pow') { 14 ** 3 }
+benchmark('mul') { 14 * 14 * 14 }
+benchmark('pow') { 14 ** 3 }
 ```
 
 You just write that in the file. You don't need to require anything. We talk
 about all the benchmarks in a file being the 'benchmark set'.
+
+If `benchmark` is for some reason overloaded, you can also use
+`Benchmarkable.benchmark`.
 
 ## Frontends
 
