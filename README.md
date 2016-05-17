@@ -7,7 +7,7 @@ you to run benchmarks written for one Ruby benchmarking system using some other
 Ruby benchmarking system.
 
 For example, Benchmarkable lets you take a benchmark from MRI's suite and run
-it using `benchmark-ips`, or run a benchmark written using Bench9000 and run
+it using `benchmark-ips`, or take a benchmark written using Bench9000 and run
 it using `bmbm`.
 
 Benchmarkable also provides a new format for writing benchmarks, which is
