@@ -6,4 +6,4 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-benchmarkable('sleep') { sleep 3 }
+benchmark('sleep') { sleep 3 }
