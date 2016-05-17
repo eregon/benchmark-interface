@@ -9,7 +9,7 @@
 array = [1, 2, 3]
 
 i = 0
-benchmarkable { i = 0; while i < 30_000_000
+Benchmarkable.benchmark { i = 0; while i < 30_000_000
   i += 1
   array.length
 end }
