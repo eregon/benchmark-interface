@@ -146,7 +146,7 @@ loop printing the iterations per second as it goes. By default it runs for
 benchmarks written for `benchmark-ips` expect. Therefore if a benchmark takes
 less than a tenth of a second it is run several times so that it takes about a
 second. The number of iterations is the same for all benchmarks in the same set
-and is printed at the set starts.
+and is printed as the set starts.
 
 You can turn this off with `--no-scale`
 
