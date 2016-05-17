@@ -13,9 +13,9 @@ unless harness_verify(harness_sample(input))
 end
 
 Object.instance_eval do
-  alias_method :true_harness_sample, :harness_sample
+  alias_method :user_harness_sample, :harness_sample
 end
 
 benchmarkable do
-  true_harness_sample input
+  user_harness_sample input
 end

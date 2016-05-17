@@ -11,9 +11,9 @@ input = micro_harness_input
 SMALL_PRIME = 149
 
 Object.instance_eval do
-  alias_method :true_micro_harness_sample, :micro_harness_sample
+  alias_method :user_micro_harness_sample, :micro_harness_sample
 end
 
 benchmarkable do
-  true_micro_harness_sample input
+  user_micro_harness_sample input
 end

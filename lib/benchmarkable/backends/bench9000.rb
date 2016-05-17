@@ -62,6 +62,8 @@ module Benchmarkable
           end
 
         end
+        
+        @loading_real = true
 
         if short_iterations
           benchmarkable_original_require 'bench9000/micro-harness'
@@ -74,6 +76,10 @@ module Benchmarkable
         end
 
         benchmarkable_original_require 'bench9000/harness'
+      end
+      
+      def self.loading_real?
+        @loading_real
       end
 
     end
