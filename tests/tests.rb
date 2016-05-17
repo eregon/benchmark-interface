@@ -27,7 +27,7 @@ end
 failed = false
 
 test_example_backend = Proc.new do |example, backend, options|
-  puts "#{example} #{backend} #{options}"
+  puts "$ #{example} #{backend} #{options}"
   
   expected_file = "tests/expected/#{File.basename(example, '.rb')}-#{backend[2..-1]}.txt"
   
@@ -35,7 +35,7 @@ test_example_backend = Proc.new do |example, backend, options|
     resquashed = `cat #{expected_file} | tests/tools/squash.rb`
     File.write expected_file, resquashed
   else
-    actual = `#{test_ruby} bin/benchmarkable #{example} #{backend} #{options} | tests/tools/squash.rb`
+    actual = `#{test_ruby} bin/benchmarkable #{example} #{backend} #{options} | tee /dev/tty | tests/tools/squash.rb`
     
     if regenerate
       File.write expected_file, actual
