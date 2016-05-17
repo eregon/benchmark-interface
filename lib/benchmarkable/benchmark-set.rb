@@ -51,7 +51,7 @@ module Benchmarkable
       # Give benchmarks iterations if needed
 
       if @benchmarks.any?(&:needs_iterating?)
-        iterations = @benchmarks.map(&:iterations_for_one_second).max
+        iterations = @benchmarks.map(&:iterations_for_one_second).min
 
         puts "This benchmark set contains blocks that want a number of iterations - running all iterations #{iterations} times"
 

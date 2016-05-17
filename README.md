@@ -119,7 +119,9 @@ the block by putting the iterations loop (presumably a `while` loop, so not
 itself involving another block) inside the benchmarked code. However this isn't
 supported by other backends. To make this work, we look at how many iterations
 are needed to make the benchmark run for about a second and always run that
-many iterations. The number of iterations is the same for all benchmarks.
+many iterations. The number of iterations is the same for all benchmarks, and
+we take the smallest number, as the larger number can be unbound and make
+some benchmarks take a very long time.
 
 ## Backends
 
