@@ -23,3 +23,11 @@ env:
   - BACKEND=bmbm
   - BACKEND=bips
 script: tests/tests.rb --$BACKEND
+matrix:
+  include:
+    - rvm: topaz
+      install:
+        - curl -Ol https://s3.amazonaws.com/jruby.org/downloads/9.1.0.0/jruby-bin-9.1.0.0.tar.gz
+        - tar -zxf jruby-bin-9.1.0.0.tar.gz
+      env: BACKEND=simple
+      script: SQUASH_RUBY=jruby-9.1.0.0/bin/jruby tests/tests.rb --$BACKEND
