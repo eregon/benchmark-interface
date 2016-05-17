@@ -8,8 +8,9 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
+test_ruby = ENV['TEST_RUBY'] || 'ruby'
 version = RUBY_VERSION.split('.').first(2).map(&:to_i)
-earlier_than_21 = version[0] < 2 || (version[0] == 2 && version[1] < 1)
+earlier_than_21 = version[0] < 2 || (version[0] == 2 && version[1] < 1) || test_ruby.include?('topaz')
 
 regenerate = ARGV.delete('--regenerate')
 resquash = ARGV.delete('--resquash')
@@ -24,8 +25,6 @@ else
 end
 
 failed = false
-
-test_ruby = ENV['TEST_RUBY'] || 'ruby'
 
 test_example_backend = Proc.new do |example, backend, options|
   puts "#{example} #{backend} #{options}"
