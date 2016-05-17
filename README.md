@@ -128,7 +128,7 @@ Supported backends are:
 
 * Simple looping, via `--simple`
 * `bm`, via `--bm`
-* `bmbm`, via `--bm`
+* `bmbm`, via `--bmbm`
 * `benchmark-ips`, via `--bips`
 * `bench9000`, via `--bench9000`
 
