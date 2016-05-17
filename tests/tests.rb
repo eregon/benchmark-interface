@@ -25,13 +25,7 @@ end
 
 failed = false
 
-SQUASH_RUBY = 'tests/tools/squash.rb'
-
-if ENV['SQUASH_RUBY']
-  squash = "#{ENV['SQUASH_RUBY']} tests/tools/squash.rb"
-else
-  squash = 'tests/tools/squash.rb'
-end
+test_ruby = ENV['TEST_RUBY'] || 'ruby'
 
 test_example_backend = Proc.new do |example, backend, options|
   puts "#{example} #{backend} #{options}"
@@ -39,10 +33,10 @@ test_example_backend = Proc.new do |example, backend, options|
   expected_file = "tests/expected/#{File.basename(example, '.rb')}-#{backend[2..-1]}.txt"
   
   if resquash
-    resquashed = `cat #{expected_file} | #{squash}`
+    resquashed = `cat #{expected_file} | tests/tools/squash.rb`
     File.write expected_file, resquashed
   else
-    actual = `bin/benchmarkable #{example} #{backend} #{options} | #{squash}`
+    actual = `#{test_ruby} bin/benchmarkable #{example} #{backend} #{options} | tests/tools/squash.rb`
     
     if regenerate
       File.write expected_file, actual

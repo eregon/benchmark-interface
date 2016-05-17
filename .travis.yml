@@ -25,9 +25,8 @@ env:
 script: tests/tests.rb --$BACKEND
 matrix:
   include:
-    - rvm: topaz
-      install:
-        - curl -Ol https://s3.amazonaws.com/jruby.org/downloads/9.1.0.0/jruby-bin-9.1.0.0.tar.gz
-        - tar -zxf jruby-bin-9.1.0.0.tar.gz
+    - install:
+        - curl -Ol http://builds.topazruby.com/topaz-linux64-019daf03d75e32124c2dfd282915b49c35f27289.tar.bz2
+        - tar -jxf topaz-linux64-019daf03d75e32124c2dfd282915b49c35f27289.tar.bz2
       env: BACKEND=simple
-      script: SQUASH_RUBY=jruby-9.1.0.0/bin/jruby tests/tests.rb --$BACKEND
+      script: TEST_RUBY=topaz/bin/topaz tests/tests.rb --$BACKEND
