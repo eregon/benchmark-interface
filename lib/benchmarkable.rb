@@ -20,7 +20,7 @@ def benchmarkable(name=nil, &block)
   Benchmarkable::BenchmarkSet.current.register name, block
 end
 
-if $PROGRAM_NAME.split('/').last != 'benchmarkable'
+if $PROGRAM_NAME.split('/').last != 'benchmark'
   set = Benchmarkable::BenchmarkSet.new
   backend = Benchmarkable::Backends::Bips
 

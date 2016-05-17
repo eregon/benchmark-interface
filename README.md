@@ -19,7 +19,7 @@ benchmarks and run them any way you like.
 ### Running an MRI benchmark using `benchmark-ips`
 
 ```
-$ benchmarkable ruby/benchmark/bm_vm1_length.rb
+$ benchmark ruby/benchmark/bm_vm1_length.rb
 
 These are long benchmarks - we're increasing warmup and sample time
 Warming up --------------------------------------
@@ -35,7 +35,7 @@ Calculating -------------------------------------
 ### Running a `bench9000` benchmark using `bmbm`
 
 ```
-$ benchmarkable bench9000/benchmarks/classic/mandelbrot.rb --bmbm
+$ benchmark bench9000/benchmarks/classic/mandelbrot.rb --bmbm
 
                  user     system      total        real
 mandelbrot   1.760000   0.030000   1.790000 (  1.804423)
@@ -83,7 +83,7 @@ Supported frontends are:
 
 As well as normal usage, you can also `require 'benchmarkable'` at the top of
 your file of benchmarks, and then run the file as a normal Ruby script. This
-will have the same effect as `benchmarkable file.rb` (and so will run
+will have the same effect as `benchmark file.rb` (and so will run
 `benchmark-ips` as the backend).
 
 #### MRI's benchmarks
@@ -103,9 +103,9 @@ file is written to `mri-rewrite-cache.rb` in the current directory.
 
 ```
 $ rbenv shell 2.3.1
-$ benchmarkable ruby/benchmark/bm_vm1_length.rb --cache
+$ benchmark ruby/benchmark/bm_vm1_length.rb --cache
 $ rbenv shell topaz-dev
-$ benchmarkable ruby/benchmark/bm_vm1_length.rb --use-cache
+$ benchmark ruby/benchmark/bm_vm1_length.rb --use-cache
 ```
 
 #### `benchmark-ips` and Perfer
@@ -170,8 +170,8 @@ configuration file which runs `benchmarkable` with the benchmark file, the
 the `bench9000` command.
 
 ```
-benchmark 'clamp_a', 'bin/benchmarkable examples/benchmarkable.rb --bench9000 clamp_a'
-benchmark 'clamp_b', 'bin/benchmarkable examples/benchmarkable.rb --bench9000 clamp_b'
+benchmark 'clamp_a', 'benchmark examples/benchmarkable.rb --bench9000 clamp_a'
+benchmark 'clamp_b', 'benchmark examples/benchmarkable.rb --bench9000 clamp_b'
 ```
 
 ```
