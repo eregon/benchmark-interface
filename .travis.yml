@@ -1,4 +1,5 @@
 language: ruby
+
 rvm:
   - ruby-1.8.7-p371
   - ruby-1.9.3-p547
@@ -13,20 +14,26 @@ rvm:
   - jruby-head
   - rbx-2.71828182
   - rbx-3.29
+
 install:
   - gem install benchmark-ips || echo skipping benchmark-ips
   - gem install parser || echo skipping parser
   - gem install unparser || echo skipping unparser
+
 env:
   - BACKEND=simple
   - BACKEND=bm
   - BACKEND=bmbm
   - BACKEND=bips
-script: tests/tests.rb --$BACKEND
+
 matrix:
   include:
-    - install:
+    - rvm: ruby-2.3.1
+      install:
         - curl -Ol http://builds.topazruby.com/topaz-linux64-019daf03d75e32124c2dfd282915b49c35f27289.tar.bz2
         - tar -jxf topaz-linux64-019daf03d75e32124c2dfd282915b49c35f27289.tar.bz2
-      env: BACKEND=simple
-      script: TEST_RUBY=topaz/bin/topaz tests/tests.rb --$BACKEND
+      env:
+        - TEST_RUBY=topaz/bin/topaz
+        - BACKEND=simple
+
+script: tests/tests.rb --$BACKEND
