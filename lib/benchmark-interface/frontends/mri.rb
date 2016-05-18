@@ -71,6 +71,7 @@ module BenchmarkInterface
 
           if options['--cache']
             File.write(CACHE_FILE, rewritten)
+            exit 1
           else
             Object.instance_eval rewritten
           end
