@@ -105,8 +105,7 @@ will have the same effect as `benchmark file.rb` (and so will run
 To run MRI's benchmarks you need two extra gems.
 
 ```
-$ gem install parser
-$ gem install unparser
+$ gem install parser unparser
 ```
 
 For MRI's benchmarks we detect the last statement, which is usually a `while`
