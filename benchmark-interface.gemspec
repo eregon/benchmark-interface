@@ -1,6 +1,8 @@
+require File.expand_path('lib/benchmark-interface/version', File.dirname(__FILE__))
+
 Gem::Specification.new do |spec|
   spec.name          = 'benchmark-interface'
-  spec.version       = '0.1'
+  spec.version       = BenchmarkInterface::VERSION
   spec.authors       = ['Chris Seaton']
   spec.email         = ['chris@chrisseaton.com']
   spec.summary       = 'One Ruby benchmarking interface to rule them all'

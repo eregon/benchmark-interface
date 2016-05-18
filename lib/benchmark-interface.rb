@@ -6,6 +6,7 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
+require 'benchmark-interface/version'
 require 'benchmark-interface/benchmark'
 require 'benchmark-interface/benchmark-set'
 require 'benchmark-interface/frontends/mri'

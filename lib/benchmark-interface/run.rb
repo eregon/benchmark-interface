@@ -34,7 +34,7 @@ module BenchmarkInterface
       arg = args[n]
       if arg.start_with? '-'
         case arg
-          when '--help', '-h', '-help'
+          when '--help', '-h', '-help', '--version', '-v', '-version'
             help
           when '--simple'
             backend = BenchmarkInterface::Backends::Simple
@@ -88,6 +88,8 @@ module BenchmarkInterface
   end
 
   def self.help
+    puts "Benchmark-Interface #{VERSION}"
+    puts
     puts 'benchmark benchmark-files.rb... [benchmark names...] [options]'
     puts
     puts 'Backends:'
