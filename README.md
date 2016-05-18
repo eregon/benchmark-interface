@@ -14,6 +14,17 @@ Benchmark-Interface also provides a new format for writing benchmarks, which is
 designed to be the simplest of all, making it easy to write lots of new
 benchmarks and run them any way you like.
 
+```
+$ gem install benchmark-interface
+```
+
+Benchmark-Interface doesn't install any backends (other benchmark tools) by
+default, so you probably also want to do:
+
+```
+$ gem install benchmark-ips
+```
+
 ## Examples
 
 ### Running an MRI benchmark using `benchmark-ips`
@@ -90,6 +101,13 @@ will have the same effect as `benchmark file.rb` (and so will run
 `benchmark-ips` as the backend).
 
 #### MRI's benchmarks
+
+To run MRI's benchmarks you need two extra gems.
+
+```
+$ gem install parser
+$ gem install unparser
+```
 
 For MRI's benchmarks we detect the last statement, which is usually a `while`
 loop and wrap that in a Benchmark-Interface block. If we see a variable being
