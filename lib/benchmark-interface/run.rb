@@ -11,7 +11,6 @@ module BenchmarkInterface
   NON_MRI_INDICATORS = %w(
     Benchmark.measure Benchmark.realtime Benchmark.benchmark Benchmark.bm
     Benchmark.bmbm RBench.run Benchmark.ips Perfer.session harness_sample
-    benchmark
   )
 
   def self.run(args)
@@ -48,7 +47,7 @@ module BenchmarkInterface
 
     to_load.each do |path|
       source = File.read(path)
-      if NON_MRI_INDICATORS.any? { |t| source.include?(t) }
+      if NON_MRI_INDICATORS.any? { |t| source.include?(t) } || source =~ /benchmark(\s+do|{)/
         set.load_benchmarks path
       else
         set.load_mri_benchmarks path, options
