@@ -6,6 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Chris Seaton']
   spec.email         = ['chris@chrisseaton.com']
   spec.summary       = 'One Ruby benchmarking interface to rule them all'
+  spec.homepage      = 'https://github.com/jruby/benchmark-interface'
   spec.description   = 'A new format for writing Ruby benchmarks, and a tool ' \
                        'that lets you run benchmarks written in many formats ' \
                        'with many different benchmarking tools'
