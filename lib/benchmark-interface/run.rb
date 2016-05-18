@@ -18,11 +18,20 @@ module BenchmarkInterface
 
     backend = BenchmarkInterface::Backends::Bips
     names = []
-    options = {}
+    
+    options = {
+      '--no-scale' => false,
+      '--use-cache' => false,
+      '--show-rewrite' => false,
+      '--cache' => false,
+      '--time' => 10
+    }
 
     to_load = []
 
-    args.each do |arg|
+    n = 0
+    while n < args.size
+      arg = args[n]
       if arg.start_with? '-'
         case arg
           when '--simple'
@@ -35,7 +44,11 @@ module BenchmarkInterface
             backend = BenchmarkInterface::Backends::BmBm
           when '--bench9000'
             backend = BenchmarkInterface::Backends::Bench9000
+          when '--time'
+            options[arg] = Integer(args[n + 1])
+            n += 1
           else
+            abort "unknown option #{arg}" unless options.keys.include?(arg)
             options[arg] = true
         end
       elsif arg.include?('.rb')
@@ -43,11 +56,12 @@ module BenchmarkInterface
       else
         names.push arg
       end
+      n += 1
     end
 
     to_load.each do |path|
       source = File.read(path)
-      if NON_MRI_INDICATORS.any? { |t| source.include?(t) } || source =~ /benchmark(\s+do|{)/
+      if NON_MRI_INDICATORS.any? { |t| source.include?(t) } || source =~ /\bbenchmark(\s+do|{)/
         set.load_benchmarks path
       else
         set.load_mri_benchmarks path, options

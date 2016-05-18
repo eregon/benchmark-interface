@@ -11,15 +11,7 @@ module BenchmarkInterface
     module Simple
 
       def self.run(benchmark_set, names, options)
-        loop_time = 10
-        
-        options.each do |option, value|
-          next if %w(--simple --use-cache).include?(option)
-          begin
-            loop_time = Integer(option[2..-1])
-          rescue
-          end
-        end
+        loop_time = options['--time']
         
         benchmark_set.benchmarks(names).each do |benchmark|
           puts benchmark.name
