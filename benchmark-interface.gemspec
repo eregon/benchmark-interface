@@ -1,5 +1,3 @@
-require 'json'
-
 Gem::Specification.new do |spec|
   spec.name          = 'benchmark-interface'
   spec.version       = '0.1'
