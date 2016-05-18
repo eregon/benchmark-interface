@@ -30,21 +30,26 @@ ARGF.each_line do |line|
   
   # Squash whitespace out of ( XXX )
   line.gsub! /\(\s*XXX\s*\)/, '(XXX)'
+
+  # Remove
+  if line.strip == 'These are short benchmarks - we\'re running each XXX times so they take about a second'
+    line = nil
+  end
   
   # Turn any lines following Comparison: into XXX as the order can change
   if state == :normal
-    if line.strip == 'Comparison:'
+    if line && line.strip == 'Comparison:'
       state = :comparison
     end
   elsif state == :comparison
-    if line.strip.empty?
+    if line && line.strip.empty?
       state = :normal
     else
       line = ' XXX'
     end
   end
   
-  if line.strip == 'XXX'
+  if line && line.strip == 'XXX'
     if last_xxx
       line = nil
     else
@@ -54,5 +59,5 @@ ARGF.each_line do |line|
     last_xxx = false
   end
   
-  puts line unless line == nil
+  puts line if line
 end

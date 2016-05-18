@@ -1,3 +1,2 @@
-These are short benchmarks - we're running each XXX times so they take about a second 
  user system total real 
 bench9000micro XXX XXX XXX (XXX) 
