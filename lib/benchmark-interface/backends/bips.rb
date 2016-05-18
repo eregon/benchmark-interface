@@ -6,7 +6,7 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-module Benchmarkable
+module BenchmarkInterface
   module Backends
     module Bips
 
@@ -14,12 +14,12 @@ module Benchmarkable
       
       def self.run(benchmark_set, names, options)
         Kernel.instance_eval do
-          alias_method :require, :benchmarkable_original_require
+          alias_method :require, :benchmark_interface_original_require
           require 'rubygems'
-          alias_method :benchmarkable_original_require, :require
+          alias_method :benchmark_interface_original_require, :require
         end
 
-        benchmarkable_original_require 'benchmark/ips'
+        benchmark_interface_original_require 'benchmark/ips'
 
         unless options['--no-scale']
           if benchmark_set.benchmarks.map(&:basic_iteration_time).max > LONG_ITERATION_THRESHOLD

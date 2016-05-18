@@ -6,7 +6,7 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-module Benchmarkable
+module BenchmarkInterface
 
   NON_MRI_INDICATORS = %w(
     Benchmark.measure Benchmark.realtime Benchmark.benchmark Benchmark.bm
@@ -15,9 +15,9 @@ module Benchmarkable
   )
 
   def self.run(args)
-    set = Benchmarkable::BenchmarkSet.new
+    set = BenchmarkInterface::BenchmarkSet.new
 
-    backend = Benchmarkable::Backends::Bips
+    backend = BenchmarkInterface::Backends::Bips
     names = []
     options = {}
 
@@ -27,15 +27,15 @@ module Benchmarkable
       if arg.start_with? '-'
         case arg
           when '--simple'
-            backend = Benchmarkable::Backends::Simple
+            backend = BenchmarkInterface::Backends::Simple
           when '--bips'
-            backend = Benchmarkable::Backends::Bips
+            backend = BenchmarkInterface::Backends::Bips
           when '--bm'
-            backend = Benchmarkable::Backends::Bm
+            backend = BenchmarkInterface::Backends::Bm
           when '--bmbm'
-            backend = Benchmarkable::Backends::BmBm
+            backend = BenchmarkInterface::Backends::BmBm
           when '--bench9000'
-            backend = Benchmarkable::Backends::Bench9000
+            backend = BenchmarkInterface::Backends::Bench9000
           else
             options[arg] = true
         end

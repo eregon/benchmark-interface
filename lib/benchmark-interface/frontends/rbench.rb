@@ -6,7 +6,7 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-module Benchmarkable
+module BenchmarkInterface
   
   class RBenchContext
     
@@ -20,7 +20,7 @@ module Benchmarkable
     
     def column(name, options=nil)
       singleton_class = (class << self; self end)
-      singleton_class.class_eval "def #{name}(&block); rbench_benchmarkable #{name.inspect}, block; end"
+      singleton_class.class_eval "def #{name}(&block); rbench_benchmark #{name.inspect}, block; end"
       @columns.push name
     end
     
@@ -33,7 +33,7 @@ module Benchmarkable
     
     def report(name, &block)
       if @columns.size == 0
-        Benchmarkable.benchmark name, &block
+        BenchmarkInterface.benchmark name, &block
       else
         @report_name = name
         instance_eval &block
@@ -46,9 +46,9 @@ module Benchmarkable
       # Ignore
     end
     
-    def rbench_benchmarkable(column_name, block)
+    def rbench_benchmark(column_name, block)
       name = [@group_name, @report_name, column_name].compact.join('-')
-      Benchmarkable.benchmark name, &block
+      BenchmarkInterface.benchmark name, &block
     end
     
   end
@@ -58,7 +58,7 @@ end
 module RBench
   
   def self.run(count, &block)
-    Benchmarkable::RBenchContext.new.instance_eval &block
+    BenchmarkInterface::RBenchContext.new.instance_eval &block
   end
   
 end

@@ -6,7 +6,7 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-require 'benchmarkable'
+require 'benchmark-interface'
 
 benchmark('mul') { '14 * 14 * 14' }
 benchmark('pow') { '14 ** 3' }

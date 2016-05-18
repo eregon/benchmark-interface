@@ -1,4 +1,4 @@
-benchmarkable:XXX 
+interface:XXX 
 XXX 
 clamp_a 
 XXX 

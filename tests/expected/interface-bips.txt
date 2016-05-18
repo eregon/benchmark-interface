@@ -1,21 +1,21 @@
 Warming up -------------------------------------- 
- benchmarkable:XXX XXX i/100ms 
+ interface:XXX XXX i/100ms 
  clamp_a XXX i/100ms 
  clamp_b XXX i/100ms 
- benchmarkable:XXX XXX i/100ms 
+ interface:XXX XXX i/100ms 
  clamp_a XXX i/100ms 
  clamp_b XXX i/100ms 
- benchmarkable:XXX XXX i/100ms 
+ interface:XXX XXX i/100ms 
  clamp_a XXX i/100ms 
  clamp_b XXX i/100ms 
 Calculating ------------------------------------- 
- benchmarkable:XXX XXX (XXX%) i/s - XXX 
+ interface:XXX XXX (XXX%) i/s - XXX 
  clamp_a XXX (XXX%) i/s - XXX 
  clamp_b XXX (XXX%) i/s - XXX 
- benchmarkable:XXX XXX (XXX%) i/s - XXX 
+ interface:XXX XXX (XXX%) i/s - XXX 
  clamp_a XXX (XXX%) i/s - XXX 
  clamp_b XXX (XXX%) i/s - XXX 
- benchmarkable:XXX XXX (XXX%) i/s - XXX 
+ interface:XXX XXX (XXX%) i/s - XXX 
  clamp_a XXX (XXX%) i/s - XXX 
  clamp_b XXX (XXX%) i/s - XXX 
  

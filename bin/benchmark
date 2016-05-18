@@ -10,6 +10,6 @@
 
 $LOAD_PATH.push File.expand_path('../../lib', __FILE__)
 
-require 'benchmarkable'
+require 'benchmark-interface'
 
-Benchmarkable.run ARGV
+BenchmarkInterface.run ARGV

@@ -6,7 +6,7 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-module Benchmarkable
+module BenchmarkInterface
   module Backends
     module Bench9000
 
@@ -66,7 +66,7 @@ module Benchmarkable
         @loading_real = true
 
         if short_iterations
-          benchmarkable_original_require 'bench9000/micro-harness'
+          benchmark_interface_original_require 'bench9000/micro-harness'
 
           Object.instance_eval do
             define_method(:harness_verify) do |output|
@@ -75,7 +75,7 @@ module Benchmarkable
           end
         end
 
-        benchmarkable_original_require 'bench9000/harness'
+        benchmark_interface_original_require 'bench9000/harness'
       end
       
       def self.loading_real?

@@ -6,7 +6,7 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-module Benchmarkable
+module BenchmarkInterface
   
   class BipsContext
     
@@ -23,7 +23,7 @@ module Benchmarkable
     def item(name=nil, code=nil, &block)
       raise 'cannot have both a string and a block' if code && block
       block = eval("Proc.new { #{code} }") if code
-      Benchmarkable.benchmark name, &block
+      BenchmarkInterface.benchmark name, &block
     end
     alias_method :report, :item
     
@@ -34,7 +34,7 @@ end
 module Benchmark
   
   def self.ips
-    yield Benchmarkable::BipsContext.new
+    yield BenchmarkInterface::BipsContext.new
   end
   
 end

@@ -16,6 +16,6 @@ Object.instance_eval do
   alias_method :user_harness_sample, :harness_sample
 end
 
-Benchmarkable.benchmark do
+BenchmarkInterface.benchmark do
   user_harness_sample input
 end

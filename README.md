@@ -1,16 +1,16 @@
-# Benchmarkable
+# Benchmark-Interface
 
 ## Introduction
 
-Benchmarkable is one Ruby benchmarking interface to rule them all. It allows
-you to run benchmarks written for one Ruby benchmarking system using some other
-Ruby benchmarking system.
+Benchmark-Interface is one Ruby benchmarking interface to rule them all. It
+allows you to run benchmarks written for one Ruby benchmarking system using some
+other Ruby benchmarking system.
 
-For example, Benchmarkable lets you take a benchmark from MRI's suite and run
-it using `benchmark-ips`, or take a benchmark written using Bench9000 and run
-it using `bmbm`.
+For example, Benchmark-Interface lets you take a benchmark from MRI's suite and
+run it using `benchmark-ips`, or take a benchmark written using Bench9000 and
+run it using `bmbm`.
 
-Benchmarkable also provides a new format for writing benchmarks, which is
+Benchmark-Interface also provides a new format for writing benchmarks, which is
 designed to be the simplest of all, making it easy to write lots of new
 benchmarks and run them any way you like.
 
@@ -41,10 +41,10 @@ $ benchmark bench9000/benchmarks/classic/mandelbrot.rb --bmbm
 mandelbrot   1.760000   0.030000   1.790000 (  1.804423)
 ```
 
-## The Benchmarkable Interface
+## The Benchmark-Interface Interface
 
-Benchmarkable provides its own new format for writing benchmarks. It's very
-simple.
+Benchmark-Interface provides its own new format for writing benchmarks. It's
+very simple.
 
 ```ruby
 benchmark { 14 * 14 * 14 }
@@ -63,16 +63,16 @@ You just write that in the file. You don't need to require anything. We talk
 about all the benchmarks in a file being the 'benchmark set'.
 
 If `benchmark` is for some reason overloaded, you can also use
-`Benchmarkable.benchmark`.
+`Benchmark-Interface.benchmark`.
 
 ## Frontends
 
 If you already have benchmarks written for a different system you can run those
-with Benchmarkable.
+with Benchmark-Interface.
 
 Supported frontends are:
 
-* Benchmarkable
+* Benchmark-Interface
 * MRI's benchmarks
 * The `benchmark` standard library (`measure`, `bm`, `bmbm` and so on)
 * RBench
@@ -82,17 +82,17 @@ Supported frontends are:
 
 ### Notes on specific frontends
 
-#### Benchmarkable
+#### Benchmark-Interface
 
-As well as normal usage, you can also `require 'benchmarkable'` at the top of
-your file of benchmarks, and then run the file as a normal Ruby script. This
+As well as normal usage, you can also `require 'benchmark-interface'` at the top
+of your file of benchmarks, and then run the file as a normal Ruby script. This
 will have the same effect as `benchmark file.rb` (and so will run
 `benchmark-ips` as the backend).
 
 #### MRI's benchmarks
 
 For MRI's benchmarks we detect the last statement, which is usually a `while`
-loop and wrap that in a Benchmarkable block. If we see a variable being
+loop and wrap that in a Benchmark-Interface block. If we see a variable being
 initialised and then used in the last statement, we copy that into the block.
 This doesn't work in all cases, but it does in most. The `--show-rewrite` option
 shows you what we are doing. Please file a bug if we're getting it wrong for any
@@ -170,13 +170,13 @@ You'll need to manually install the `benchmark-ips` gem.
 #### Bench9000
 
 Using Bench9000 as a backend is a little more complex. You need to define a
-configuration file which runs `benchmarkable` with the benchmark file, the
+configuration file which runs `benchmark` with the benchmark file, the
 `--bench9000` flag and the name of the benchmark, and then you separately run
 the `bench9000` command.
 
 ```
-benchmark 'clamp_a', 'benchmark examples/benchmarkable.rb --bench9000 clamp_a'
-benchmark 'clamp_b', 'benchmark examples/benchmarkable.rb --bench9000 clamp_b'
+benchmark 'clamp_a', 'benchmark examples/benchmark-interface.rb --bench9000 clamp_a'
+benchmark 'clamp_b', 'benchmark examples/benchmark-interface.rb --bench9000 clamp_b'
 ```
 
 ```
@@ -198,7 +198,7 @@ Tested versions are in brackets.
 * Rubinius (2.71828182, 3.29)
 * Topaz
 
-Benchmarkable is designed to be gentle on new implementations of Ruby and
+Benchmark-Interface is designed to be gentle on new implementations of Ruby and
 should hopefully be relatively easy to get working if you are writing one.
 
 One major limitation is that the `unparser` gem doesn't work with Ruby versions

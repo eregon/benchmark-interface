@@ -6,7 +6,7 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-module Benchmarkable
+module BenchmarkInterface
   module Backends
     module Bm
 
@@ -18,8 +18,8 @@ module Benchmarkable
           
         ::Benchmark.send(:remove_const, :CAPTION) if defined?(::Benchmark::CAPTION)
         ::Benchmark.send(:remove_const, :FORMAT)  if defined?(::Benchmark::FORMAT)
-        
-        benchmarkable_original_require 'benchmark'
+
+        benchmark_interface_original_require 'benchmark'
 
         unless options['--no-scale']
           min_time = benchmark_set.benchmarks.map(&:basic_iteration_time).min

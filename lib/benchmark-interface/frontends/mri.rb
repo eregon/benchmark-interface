@@ -6,7 +6,7 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-module Benchmarkable
+module BenchmarkInterface
   module Frontends
     module MRI
 
@@ -53,7 +53,7 @@ module Benchmarkable
                 end
               end
 
-              insert_before node.location.expression, 'Benchmarkable.benchmark { ' + assigns_source
+              insert_before node.location.expression, 'BenchmarkInterface.benchmark { ' + assigns_source
               insert_after node.location.expression, ' }'
             end
 

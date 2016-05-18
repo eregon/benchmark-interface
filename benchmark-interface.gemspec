@@ -1,7 +1,7 @@
 require 'json'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'benchmarkable'
+  spec.name          = 'benchmark-interface'
   spec.version       = '0.1'
   spec.authors       = ['Chris Seaton']
   spec.email         = ['chris@chrisseaton.com']

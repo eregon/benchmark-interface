@@ -6,22 +6,14 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-module Benchmarkable
-  
-  class PerferContext
-    
-    def iterate(name, &block)
-      Benchmarkable.benchmark name, &block
-    end
-    
-  end
-  
+input = micro_harness_input
+
+SMALL_PRIME = 149
+
+Object.instance_eval do
+  alias_method :user_micro_harness_sample, :micro_harness_sample
 end
 
-module Perfer
-  
-  def self.session(name)
-    yield Benchmarkable::PerferContext.new
-  end
-  
+BenchmarkInterface.benchmark do
+  user_micro_harness_sample input
 end

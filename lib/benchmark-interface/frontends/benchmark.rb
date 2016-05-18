@@ -6,12 +6,12 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-module Benchmarkable
+module BenchmarkInterface
   
   class BenchmarkContext
     
     def report(name=nil, &block)
-      Benchmarkable.benchmark name, &block
+      BenchmarkInterface.benchmark name, &block
     end
     
   end
@@ -24,27 +24,27 @@ module Benchmark
   FORMAT  = "%10.6u %10.6y %10.6t %10.6r\n"
 
   def self.measure(name=nil, &block)
-    Benchmarkable.benchmark name, &block
+    BenchmarkInterface.benchmark name, &block
   end
 
   def self.realtime(name=nil, &block)
-    Benchmarkable.benchmark name, &block
+    BenchmarkInterface.benchmark name, &block
   end
 
   def self.benchmark(caption='', label_width=nil, format=nil, *labels)
-    yield Benchmarkable::BenchmarkContext.new
+    yield BenchmarkInterface::BenchmarkContext.new
   end
 
   def self.realtime(name=nil, &block)
-    Benchmarkable.benchmark name, &block
+    BenchmarkInterface.benchmark name, &block
   end
   
   def self.bm(label_width=0, *labels)
-    yield Benchmarkable::BenchmarkContext.new
+    yield BenchmarkInterface::BenchmarkContext.new
   end
 
   def self.bmbm(label_width=0)
-    yield Benchmarkable::BenchmarkContext.new
+    yield BenchmarkInterface::BenchmarkContext.new
   end
   
 end

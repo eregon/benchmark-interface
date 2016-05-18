@@ -6,7 +6,7 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
-require 'benchmarkable'
+require 'benchmark-interface'
 
 require File.expand_path('clamp', File.dirname(__FILE__))
 
