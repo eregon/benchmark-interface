@@ -63,7 +63,7 @@ module BenchmarkInterface
 
     to_load.each do |path|
       source = File.read(path)
-      if NON_MRI_INDICATORS.any? { |t| source.include?(t) } || source =~ /\bbenchmark(\s+do|{)/
+      if NON_MRI_INDICATORS.any? { |t| source.include?(t) } || source =~ /\bbenchmark.*(do|\{)/
         set.load_benchmarks path
       else
         set.load_mri_benchmarks path, options
