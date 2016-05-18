@@ -34,6 +34,8 @@ module BenchmarkInterface
       arg = args[n]
       if arg.start_with? '-'
         case arg
+          when '--help', '-h', '-help'
+            help
           when '--simple'
             backend = BenchmarkInterface::Backends::Simple
           when '--bips'
@@ -83,6 +85,25 @@ module BenchmarkInterface
     names = set.benchmarks.map(&:name) if names.empty?
 
     backend.run set, names, options
+  end
+
+  def self.help
+    puts 'benchmark benchmark-files.rb... [benchmark names...] [options]'
+    puts
+    puts 'Backends:'
+    puts '  --simple'
+    puts '  --bips (default)'
+    puts '  --bm'
+    puts '  --bmbm'
+    puts '  --bench9000'
+    puts
+    puts 'Options:'
+    puts '  --no-scale        Don\'t scale benchmarks for backends that expects benchmarks to take about a second'
+    puts '  --show-rewrite    Show rewritten MRI benchmarks'
+    puts '  --cache           Cache MRI rewrites'
+    puts '  --use-cache       Use cached MRI rewrites'
+    puts '  --time n          Run for n seconds, if the backend supports that'
+    exit 1
   end
 
 end
