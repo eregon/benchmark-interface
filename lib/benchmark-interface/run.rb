@@ -24,7 +24,8 @@ module BenchmarkInterface
       '--use-cache' => false,
       '--show-rewrite' => false,
       '--cache' => false,
-      '--time' => 10
+      '--time' => 10,
+      '--freq' => 1
     }
 
     to_load = []
@@ -48,6 +49,9 @@ module BenchmarkInterface
             backend = BenchmarkInterface::Backends::Bench9000
           when '--time'
             options[arg] = Integer(args[n + 1])
+            n += 1
+          when '--freq'
+            options[arg] = Float(args[n + 1])
             n += 1
           else
             abort "unknown option #{arg}" unless options.keys.include?(arg)

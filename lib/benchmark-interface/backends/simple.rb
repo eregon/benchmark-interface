@@ -12,6 +12,7 @@ module BenchmarkInterface
 
       def self.run(benchmark_set, names, options)
         full_time = options['--time']
+        freq = options['--freq']
         
         inner_iterations = benchmark_set.iterations
         
@@ -47,7 +48,7 @@ module BenchmarkInterface
               # it take a second.
               ips = iterations / round_time
               puts ips * inner_iterations
-              iterations = ips.to_i
+              iterations = (ips * freq).to_i
               iterations = 1 if iterations < 1
             end
           end
