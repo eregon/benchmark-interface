@@ -25,10 +25,14 @@ module BenchmarkInterface
       '--show-rewrite' => false,
       '--cache' => false,
       '--time' => 10,
-      '--freq' => 1
+      '--freq' => 1,
+      '--log' => nil,
+      '--tag' => [],
+      '--prop' => {}
     }
 
     to_load = []
+    first = false
 
     n = 0
     while n < args.size
@@ -47,12 +51,25 @@ module BenchmarkInterface
             backend = BenchmarkInterface::Backends::BmBm
           when '--bench9000'
             backend = BenchmarkInterface::Backends::Bench9000
+          when '--deep'
+            backend = BenchmarkInterface::Backends::Deep
+          when '--Xfirst'
+            first = true
           when '--time'
             options[arg] = Integer(args[n + 1])
             n += 1
           when '--freq'
             options[arg] = Float(args[n + 1])
             n += 1
+          when '--log'
+            options[arg] = args[n + 1]
+            n += 1
+          when '--tag'
+            options[arg].push args[n + 1]
+            n += 1
+          when '--prop'
+            options[arg][args[n + 1]] = args[n + 2]
+            n += 2
           else
             abort "unknown option #{arg}" unless options.keys.include?(arg)
             options[arg] = true
@@ -79,6 +96,10 @@ module BenchmarkInterface
     if set.benchmarks.empty?
       abort 'No benchmarks found!'
     end
+    
+    if first
+      set.benchmarks.replace [set.benchmarks.first]
+    end
 
     names.each do |name|
       unless set.benchmark(name)
@@ -102,6 +123,7 @@ module BenchmarkInterface
     puts '  --bm'
     puts '  --bmbm'
     puts '  --bench9000'
+    puts '  --deep'
     puts
     puts 'Options:'
     puts '  --no-scale        Don\'t scale benchmarks for backends that expects benchmarks to take about a second'

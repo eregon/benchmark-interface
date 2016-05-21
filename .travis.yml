@@ -19,12 +19,14 @@ install:
   - gem install benchmark-ips || echo skipping benchmark-ips
   - gem install parser || echo skipping parser
   - gem install unparser || echo skipping unparser
+  - git clone --branch run --depth 1 https://github.com/jruby/deep-bench.git
 
 env:
   - BACKEND=simple
   - BACKEND=bm
   - BACKEND=bmbm
   - BACKEND=bips
+  - BACKEND=deep
 
 matrix:
   include:
@@ -32,6 +34,7 @@ matrix:
       install:
         - curl -Ol http://builds.topazruby.com/topaz-linux64-019daf03d75e32124c2dfd282915b49c35f27289.tar.bz2
         - tar -jxf topaz-linux64-019daf03d75e32124c2dfd282915b49c35f27289.tar.bz2
+        - git clone --branch master --depth 1 https://github.com/jruby/deep-bench.git
       env:
         - TEST_RUBY=topaz/bin/topaz
         - BACKEND=simple

@@ -24,6 +24,12 @@ else
   backends = ARGV
 end
 
+if File.directory?('../deep-bench')
+  deep_bench = '../deep-bench'
+else
+  deep_bench = 'deep-bench'
+end
+
 failed = false
 
 test_example_backend = Proc.new do |example, backend, options|
@@ -35,7 +41,7 @@ test_example_backend = Proc.new do |example, backend, options|
     resquashed = `cat #{expected_file} | tests/tools/squash.rb`
     File.write expected_file, resquashed
   else
-    actual = `#{test_ruby} bin/benchmark #{example} #{backend} #{options} | tee /dev/tty | tests/tools/squash.rb`
+    actual = `#{test_ruby} -I #{deep_bench}/lib bin/benchmark #{example} #{backend} #{options} | tee /dev/tty | tests/tools/squash.rb`
     
     if regenerate
       File.write expected_file, actual
@@ -53,6 +59,8 @@ test_example_backend = Proc.new do |example, backend, options|
   end
 end
 
+ENV['CI'] = 'yes'
+
 examples.each do |example|
   backends.each do |backend|
     if example == 'examples/mri.rb'
@@ -64,6 +72,8 @@ examples.each do |example|
       ensure
         `rm -f mri-rewrite-cache.rb`
       end
+    elsif backend == '--deep'
+      test_example_backend.call example, backend, '--Xfirst'
     else
       test_example_backend.call example, backend, ''
     end
