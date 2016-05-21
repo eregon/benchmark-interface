@@ -19,7 +19,7 @@ install:
   - gem install benchmark-ips || echo skipping benchmark-ips
   - gem install parser || echo skipping parser
   - gem install unparser || echo skipping unparser
-  - git clone --branch run --depth 1 https://github.com/jruby/deep-bench.git
+  - git clone --branch master --depth 1 https://github.com/jruby/deep-bench.git
 
 env:
   - BACKEND=simple
