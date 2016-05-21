@@ -11,24 +11,46 @@ module BenchmarkInterface
     module Simple
 
       def self.run(benchmark_set, names, options)
-        loop_time = options['--time']
+        full_time = options['--time']
+        freq = options['--freq']
+        
+        inner_iterations = benchmark_set.iterations
         
         benchmark_set.benchmarks(names).each do |benchmark|
           puts benchmark.name
           block = benchmark.block
 
           start_time = Time.now
+          iterations = 1
 
-          while Time.now - start_time < loop_time
-            start_iteration_time = Time.now
-            iterations = 0
-            while Time.now - start_iteration_time < 1
+          while Time.now - start_time < full_time
+            start_round_time = Time.now
+            iterations.times do
               block.call
-              iterations += 1
             end
-            iteration_time = Time.now - start_iteration_time
-            iterations *= benchmark_set.iterations
-            puts iterations / iteration_time
+            round_time = Time.now - start_round_time
+
+            if round_time == 0
+              iterations *= 2
+              next
+            end
+
+            if round_time < 0.01
+              # If the round time was very low and so very imprecise then we may
+              # get a wild number of iterations next time. Instead, just double
+              # the number of iterations until it's at least a hundredth of a
+              # second. Don't even print the result until then, as otherwise
+              # without the extra round time information it could be misleading.
+              iterations *= 2
+            else
+              # If the iteration time is at least a hundredth of a second, we
+              # can print an ips and adjust for the next round to try to make
+              # it take a second.
+              ips = iterations / round_time
+              puts ips * inner_iterations
+              iterations = (ips * freq).to_i
+              iterations = 1 if iterations < 1
+            end
           end
         end
       end

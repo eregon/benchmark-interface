@@ -160,7 +160,8 @@ Supported backends are:
 
 Simple looping does the simplest thing possible and runs your benchmark in a
 loop printing the iterations per second as it goes. By default it runs for
-10s, but you can use options like `--time 60` to run for 60 seconds.
+10s, printing the time every second, but you can use options like `--time 60`
+to run for 60 seconds, and `--freq 0.1` to print ten times a second.
 
 #### `bm` and `bmbm`
 
