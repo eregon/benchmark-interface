@@ -13,7 +13,6 @@ Gem::Specification.new do |spec|
   spec.licenses      = ['EPL-1.0', 'GPL-2.0', 'LGPL-2.1']
 
   spec.files         = `git ls-files -z`.split("\x0")
-  spec.test_files    = spec.files.grep(%r{^test/})
   spec.require_paths = ['lib']
   spec.bindir        = 'bin'
   spec.executables   = ['benchmark']
