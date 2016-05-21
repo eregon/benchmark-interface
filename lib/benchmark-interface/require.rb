@@ -6,6 +6,21 @@
 # GNU General Public License version 2
 # GNU Lesser General Public License version 2.1
 
+module BeckhmarkInterface
+  
+  def self.require_rubygems
+    begin
+      Kernel.instance_eval do
+        alias_method :require, :benchmark_interface_original_require
+        require 'rubygems'
+        alias_method :benchmark_interface_original_require, :require
+      end
+    rescue
+    end
+  end
+
+end
+
 module Kernel
 
   alias_method :benchmark_interface_original_require, :require
