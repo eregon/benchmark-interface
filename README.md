@@ -74,7 +74,7 @@ You just write that in the file. You don't need to require anything. We talk
 about all the benchmarks in a file being the 'benchmark set'.
 
 If `benchmark` is for some reason overloaded, you can also use
-`Benchmark-Interface.benchmark`.
+`BenchmarkInterface.benchmark`.
 
 ## Frontends
 
